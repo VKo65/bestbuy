@@ -16,18 +16,16 @@ def start():
     print("\n  Store Menu \n  ----------\n1. List all products in store\n"
           "2. Show total amount in store\n3. Make an order\n4. Quit")
     users_choice = int(input("Please choose a number: "))
-
     if users_choice > 4:
         raise Exception("Store Menu has only 4 choices!")
-
     elif users_choice == 1:
         for product in best_buy.get_all_products():
             product.show()
-
     elif users_choice == 2:
         print(f"Total quantity in store: {best_buy.get_total_quantity()}")
-
     elif users_choice == 3:
+        #for product in best_buy.get_all_products():
+            #print(product.name)
         product_name = input("Please enter product name: ")
         try:
             product_quantity = int(input("Enter quantity: "))
@@ -53,18 +51,14 @@ def start():
             print(f"Order successful! Total price: ${total_price:.2f}")
         except Exception as e:
             print(f"Order failed: {e}")
-
     elif users_choice == 4:
         print("Goodbye!")
         return False
     return True
 
-
 def main():
     while start():
-        #start()
         pass
-
 
 if __name__ == "__main__":
     main()

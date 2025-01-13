@@ -1,4 +1,5 @@
 class Product:
+
     def __init__(self, name: str, price: float, quantity: int):
         """Constructor for product attributes"""
         if not name or not isinstance(name, str):
@@ -13,26 +14,40 @@ class Product:
         self.quantity = quantity
         self.active = True
 
+
     def get_quantity(self: float):
+        """Just output of instance quality"""
         return self.quantity
 
+
     def set_quantity(self, quantity):
+        """Function to be reduce quantity
+        """
         self.quantity -= quantity
         if quantity < 1:
             deactivate()
         return
 
+
     def is_active(self):
+        """Bool to check status of product"""
         return self.active
 
+
     def activate(self):
+        """Function to activate product"""
         self.active = True
         return
 
+
     def deactivate(self):
+        """Function to deactivate product"""
         self.active = False
         return
+
+
     def show(self):
+        """Function to print information of the object """
         print(f"{self.name}, {self.price}, {self.quantity}")
 
     def buy(self, quantity):
@@ -45,6 +60,8 @@ class Product:
                 if self.quantity == 0:
                     self.active = False
             return f"Total price is: {self.price * quantity}"
+
+
 def main():
     """bose = Product("Bose QuietComfort Earbuds", price=250, quantity=500)
     mac = Product("MacBook Air M2", price=1450, quantity=100)

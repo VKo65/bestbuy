@@ -17,7 +17,9 @@ class Product:
         return self.quantity
 
     def set_quantity(self, quantity):
-        self.quantity += quantity
+        self.quantity -= quantity
+        if quantity < 1:
+            deactivate()
         return
 
     def is_active(self):
@@ -35,16 +37,16 @@ class Product:
 
     def buy(self, quantity):
         if quantity > self.quantity:
-            raise Exception(f"There are not enough products in store. Available Quantity is: {self.quantity}")
+            raise Exception(f"There is not enough quantity in store. Available Quantity is: {self.quantity}")
 
         else:
             if self.quantity >= quantity:
-                self.quantity -= quantity
+                self.set_quantity(quantity)
                 if self.quantity == 0:
                     self.active = False
-                return f"Total price is: {self.price * quantity}"
+            return f"Total price is: {self.price * quantity}"
 def main():
-    bose = Product("Bose QuietComfort Earbuds", price=250, quantity=500)
+    """bose = Product("Bose QuietComfort Earbuds", price=250, quantity=500)
     mac = Product("MacBook Air M2", price=1450, quantity=100)
 
     print(bose.buy(50))
@@ -55,7 +57,7 @@ def main():
     mac.show()
 
     bose.set_quantity(1000)
-    bose.show()
+    bose.show()"""
 
 if __name__ == "__main__":
     main()

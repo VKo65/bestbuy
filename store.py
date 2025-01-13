@@ -1,11 +1,11 @@
+#import products
 
-from products import Product
 
 class Store:
     """Constructor for class Store. """
 
-    def __init__(self, products):
-        self.list_of_products = products
+    def __init__(self, product):
+        self.list_of_products = product
 
     def add_product(self, product):
         self.list_of_products.append(product)
@@ -32,15 +32,15 @@ class Store:
 
 def main():
 
-    product_list = [Product("MacBook Air M2", price=1450, quantity=100),
-                    Product("Bose QuietComfort Earbuds", price=250, quantity=500),
-                    Product("Google Pixel 7", price=500, quantity=250),
+   """ product_list = [products.Product("MacBook Air M2", price=1450, quantity=100),
+                    products.Product("Bose QuietComfort Earbuds", price=250, quantity=500),
+                    products.Product("Google Pixel 7", price=500, quantity=250),
                     ]
 
     store = Store(product_list)
-    products = store.get_all_products()
+    oproducts = store.get_all_products()
     print(store.get_total_quantity())
-    print(store.order([(products[0], 1), (products[1], 2)]))
+    print(store.order([(oproducts[0], 1), (oproducts[1], 2)]))"""
 
 
 

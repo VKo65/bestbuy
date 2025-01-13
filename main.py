@@ -1,7 +1,8 @@
 import products
 import store
 
-# setup initial stock of inventory
+"""setup initial stock of inventory"""
+
 product_list = [ products.Product("MacBook Air M2", price=1450, quantity=100),
                  products.Product("Bose QuietComfort Earbuds", price=250, quantity=500),
                  products.Product("Google Pixel 7", price=500, quantity=250)
@@ -9,13 +10,17 @@ product_list = [ products.Product("MacBook Air M2", price=1450, quantity=100),
 
 
 def start():
-    """Get product list from Store.
-    Output Store menu and prompt user to choose action.
-    Execute with the methode from """
+    """Displays the main menu of the store, processes user input
+    and carries out corresponding actions:
+    - Displays products
+    - Returns the total number of products
+    - Fulfills orders
+    - Exits the program"""
     best_buy = store.Store(product_list)
     print("\n  Store Menu \n  ----------\n1. List all products in store\n"
           "2. Show total amount in store\n3. Make an order\n4. Quit")
     users_choice = int(input("Please choose a number: "))
+    print(f"You chose option {users_choice}.")
     if users_choice > 4:
         raise Exception("Store Menu has only 4 choices!")
     elif users_choice == 1:
@@ -24,8 +29,6 @@ def start():
     elif users_choice == 2:
         print(f"Total quantity in store: {best_buy.get_total_quantity()}")
     elif users_choice == 3:
-        #for product in best_buy.get_all_products():
-            #print(product.name)
         product_name = input("Please enter product name: ")
         try:
             product_quantity = int(input("Enter quantity: "))
@@ -57,9 +60,9 @@ def start():
     return True
 
 def main():
+    """Starts the main Code and loop it until exit."""
     while start():
         pass
 
 if __name__ == "__main__":
     main()
-

@@ -59,6 +59,7 @@ def start():
         return False
     return True
 
+
 def main():
     """Starts the main Code and loop it until exit."""
     while start():

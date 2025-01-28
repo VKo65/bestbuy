@@ -1,18 +1,28 @@
 class Product:
 
     def __init__(self, name: str, price: float, quantity: int):
-        """Constructor for product attributes"""
-        if not name or not isinstance(name, str):
-            raise Exception("Product name cannot be empty and must be string!")
-        if price < 0:
-            raise Exception ("Price must be positive!")
-        if quantity < 0 or not isinstance(quantity, int):
-            raise Exception("Quantity must be positive integer!")
+        """Constructor for product attributes with type and value checks. --> Shahriar"""
+        # Type checks
+        if not isinstance(name, str):
+            raise TypeError("Product name must be a string.")
+        if not isinstance(price, (int, float)):
+            raise TypeError("Price must be a number (int or float).")
+        if not isinstance(quantity, int):
+            raise TypeError("Quantity must be an integer.")
 
+        # Value checks
+        if not name.strip():
+            raise ValueError("Product name cannot be empty.")
+        if price < 0:
+            raise ValueError("Price must be non-negative.")
+        if quantity < 0:
+            raise ValueError("Quantity must be non-negative.")
+
+        # Assign to instance variables
         self.name = name
         self.price = price
         self.quantity = quantity
-        self.active = True
+        self.active = True  # Default value for active status
 
 
     def get_quantity(self: float):
@@ -50,16 +60,17 @@ class Product:
         """Function to print information of the object """
         print(f"{self.name}, {self.price}, {self.quantity}")
 
-    def buy(self, quantity):
+    def buy(self, quantity: int):
+        """Allows buying a specified quantity with type and value checks. --> Shahriar"""
+        if not isinstance(quantity, int):
+            raise TypeError("Quantity must be an integer.")
+        if quantity <= 0:
+            raise ValueError("Quantity must be a positive integer.")
         if quantity > self.quantity:
-            raise Exception(f"There is not enough quantity in store. Available Quantity is: {self.quantity}")
+            raise ValueError(f"Not enough quantity in store. Available quantity: {self.quantity}.")
 
-        else:
-            if self.quantity >= quantity:
-                self.set_quantity(quantity)
-                if self.quantity == 0:
-                    self.active = False
-            return f"Total price is: {self.price * quantity}"
+        self.set_quantity(quantity)  # Reduces quantity and deactivates if stock < 1
+        return f"Total price is: {self.price * quantity:.2f}"
 
 
 def main():

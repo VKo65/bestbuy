@@ -19,7 +19,15 @@ def start():
     best_buy = store.Store(product_list)
     print("\n  Store Menu \n  ----------\n1. List all products in store\n"
           "2. Show total amount in store\n3. Make an order\n4. Quit")
-    users_choice = int(input("Please choose a number: "))
+    try:
+        """Check users input, if > 4 and <1
+        --> Shahriar"""
+        users_choice = int(input("Please choose a number: "))
+        if users_choice < 1 or users_choice > 4:
+            raise ValueError("Choice out of range. Please choose a number between 1 and 4.")
+    except ValueError as e:
+        print(f"Invalid input: {e}")
+        return True
     print(f"You chose option {users_choice}.")
     if users_choice > 4:
         raise Exception("Store Menu has only 4 choices!")
